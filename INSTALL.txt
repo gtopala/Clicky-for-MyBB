@@ -1,0 +1,56 @@
+INSTALL
+
+
+This is short installation guide.
+
+==== Installation ====
+
+The installation process, as with most MyBB plugins, is simple and (unfortunately) manual.
+
+The file, located in the package in the "/clicky/src/" folder", should be copied, via FTP or whatever method is available, to the MyBB source code tree, specifically to the "/inc/plugins/" folder.
+
+That's it.
+
+
+==== Activation ====
+
+After copying files the plugin must be activated.
+
+This is done by going to the Admin menu Configuration / Plugins, locating the plugin in the table and clicking the "Activate" button/link.
+
+That's it.
+
+If you don't see the plugin listed there that means there is something wrong with the installation.
+
+
+==== Configuration ====
+
+After activation the plugin must be configured.
+
+This is done by going to the Admin menu Configuration / Settings, locating the plugin in the table and clicking its button/link. This shows the parameters that the plugin needs in order to work correctly.
+
+At the moment there is only one parameter and that is the "Site ID". This is an identifier provided by Clicky and should look like "111111" or similar.
+
+
+==== Testing ====
+
+After going through all the previous steps go to the board home page and refresh it to make sure new HTML is generated. View the source code of that page - Ctrl-U on Firefox/Windows or right-click menu "View Page Source". 
+
+Near bottom of the page you should see something like this ...
+
+<script type="text/javascript">
+var clicky_site_ids = clicky_site_ids || [];
+clicky_site_ids.push(XXXXXX);
+(function() {
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//static.getclicky.com/js';
+  ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+})();
+</script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/XXXXXXns.gif" /></p></noscript>
+
+That means the plugin works and is inserting the necessary code.
+
+If for some reason you don't see this that means something went wrong with the previous steps.
