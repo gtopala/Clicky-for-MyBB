@@ -5,3 +5,6 @@ CHANGES
 - Initial release.
 
 
+2012-08-08
+
+- Support for attaching usernames to visitors using Clicky's custom data tracking feature (https://secure.getclicky.com/help/customization#session)

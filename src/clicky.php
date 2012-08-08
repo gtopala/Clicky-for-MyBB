@@ -32,10 +32,10 @@ function clicky_info()
 	(
 		'name'=>'Clicky',
 		'description'=>'Adding Clicky Analytics tracking code to every page.',
-		'website'=>'http://mods.mybb.com/',
+		'website'=>'http://mods.mybb.com/view/clicky',
 		'author'=>'Gabriel Topala',
 		'authorsite' => 'http://www.gtopala.com/',
-		'version'=>'1.0',
+		'version'=>'1.1',
 		'guid'=>'04472bacaa2e891573e4bc5c5d680e43',
 		'compatibility'=>'16*',
 		'codename'=>'clicky'
@@ -106,6 +106,13 @@ function clicky($page)
 	if($mybb->settings['clicky_webpropertyid'])
 	{
 		$page=str_replace('</body>', '
+<script type="text/javascript">
+var clicky_custom = {};
+clicky_custom.session = {
+username: \''.$mybb->user['username'].'\',
+email: \''.$mybb->user['email'].'\'
+};
+</script>
 <script src="//static.getclicky.com/js" type="text/javascript"></script>
 <script type="text/javascript">try{ clicky.init('.$mybb->settings['clicky_webpropertyid'].'); }catch(e){}</script>
 <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/'.$mybb->settings['clicky_webpropertyid'].'ns.gif" /></p></noscript></body>',$page);
